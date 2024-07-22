@@ -5,14 +5,31 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             console.log(data); // Check if data is being fetched correctly
-            recommendations = data.countries.flatMap(country => country.cities.map(city => ({
-                country: country.name,
-                name: city.name,
-                imageUrl: city.imageUrl,
-                description: city.description,
-                type: city.type,
-                timeZone: city.timeZone
-            })));
+            // Flatten the data into a single recommendations array
+            recommendations = [
+                ...data.countries.flatMap(country => country.cities.map(city => ({
+                    country: country.name,
+                    name: city.name,
+                    imageUrl: city.imageUrl,
+                    description: city.description,
+                    type: city.type,
+                    timeZone: city.timeZone
+                }))),
+                ...data.temples.map(temple => ({
+                    name: temple.name,
+                    imageUrl: temple.imageUrl,
+                    description: temple.description,
+                    type: 'temple',
+                    timeZone: temple.timeZone
+                })),
+                ...data.beaches.map(beach => ({
+                    name: beach.name,
+                    imageUrl: beach.imageUrl,
+                    description: beach.description,
+                    type: 'beach',
+                    timeZone: beach.timeZone
+                }))
+            ];
             displayRecommendations(recommendations);
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -70,7 +87,7 @@ function search(recommendations) {
     const filteredRecommendations = recommendations.filter(recommendation => {
         const name = recommendation.name.toLowerCase();
         const description = recommendation.description.toLowerCase();
-        const country = recommendation.country.toLowerCase();
+        const country = recommendation.country ? recommendation.country.toLowerCase() : '';
         const type = recommendation.type.toLowerCase();
         return name.includes(searchInput) || description.includes(searchInput) || country.includes(searchInput) || type.includes(searchInput);
     });
