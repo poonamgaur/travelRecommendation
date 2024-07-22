@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: city.name,
                 imageUrl: city.imageUrl,
                 description: city.description,
-                type: city.type // Assuming type field is added to each city in JSON (e.g., "beach", "temple", "country")
+                type: city.type,
+                timeZone: city.timeZone
             })));
             displayRecommendations(recommendations);
         })
@@ -42,12 +43,24 @@ function displayRecommendations(recommendations) {
         const description = document.createElement('p');
         description.textContent = recommendation.description;
 
+        const time = document.createElement('p');
+        time.textContent = getCurrentTime(recommendation.timeZone);
+        setInterval(() => {
+            time.textContent = getCurrentTime(recommendation.timeZone);
+        }, 1000);
+
         recommendationDiv.appendChild(img);
         recommendationDiv.appendChild(name);
         recommendationDiv.appendChild(description);
+        recommendationDiv.appendChild(time);
 
         recommendationsContainer.appendChild(recommendationDiv);
     });
+}
+
+function getCurrentTime(timeZone) {
+    const options = { timeZone, hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    return new Date().toLocaleTimeString('en-US', options);
 }
 
 function search(recommendations) {

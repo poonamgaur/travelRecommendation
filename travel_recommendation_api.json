@@ -8,13 +8,15 @@
                     "name": "Sydney, Australia",
                     "imageUrl": "Sydney.jpg",
                     "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge.",
-                    "type": "city"
+                    "type": "city",
+                    "timeZone": "Australia/Sydney"
                 },
                 {
-                    "name": "Gold Coast, Australia",
+                    "name": "Melbourne, Australia",
                     "imageUrl": "Melbourne.jpg",
                     "description": "Famous for its stunning beaches and surfing spots.",
-                    "type": "beach"
+                    "type": "beach",
+                    "timeZone": "Australia/Brisbane"
                 }
             ]
         },
@@ -26,13 +28,15 @@
                     "name": "Tokyo, Japan",
                     "imageUrl": "tokyo.jpg",
                     "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture.",
-                    "type": "city"
+                    "type": "city",
+                    "timeZone": "Asia/Tokyo"
                 },
                 {
                     "name": "Kyoto, Japan",
                     "imageUrl": "kyoto.jpg",
                     "description": "Known for its historic temples, gardens, and traditional tea houses.",
-                    "type": "temple"
+                    "type": "temple",
+                    "timeZone": "Asia/Tokyo"
                 }
             ]
         },
@@ -44,13 +48,15 @@
                     "name": "Rio de Janeiro, Brazil",
                     "imageUrl": "Rio.jpg",
                     "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks.",
-                    "type": "beach"
+                    "type": "beach",
+                    "timeZone": "America/Sao_Paulo"
                 },
                 {
                     "name": "São Paulo, Brazil",
                     "imageUrl": "São-Paulo.jpg",
                     "description": "The financial hub with diverse culture, arts, and a vibrant nightlife.",
-                    "type": "city"
+                    "type": "city",
+                    "timeZone": "America/Sao_Paulo"
                 }
             ]
         }
